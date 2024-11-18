@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <style>
+        body {
+    background-color: rgb(29, 29, 29);
+    display: flex;
+    justify-content: center;
+    align-items: start;
+    height: 100vh;
+}
+
+main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: start;
+    width: 90%;
+    height: 70%;
+    color: peru;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    text-align: center;
+    font-size: 1.5rem;
+}
+    </style>
+    <main>
+        <h1>KODLUYORUZ</h1>
+        <p id="welcomeText"></p>
+        <p id="todayInfo"></p>
+        <p>tarihinde <strong>Kodluyoruz Frontend Web Development Patikası</strong>'nın Javascript <br> bölümü 1. Ödevindesiniz.</p>
+    </main>
+    <script>
+        let userName = "";
+
+document.addEventListener('DOMContentLoaded', function() {
+    namePrompt();
+    todayFunc();
+    updateTime();
+});
+
+function namePrompt() {
+    userName = prompt("Adınızı giriniz: ");
+    document.querySelector('#welcomeText').innerHTML = `Merhaba, <b>${userName}!</b> Hoşgeldin!`;
+}
+
+function todayFunc() {
+    let today = new Date();
+    let day = today.getDay();
+    const dayList = ["Pazar","Pazartesi","Salı","Çarşamba ","Perşembe","Cuma","Cumartesi"];
+    let hour = today.getHours();
+    let minute = today.getMinutes();
+    let second = today.getSeconds();
+    document.querySelector('#todayInfo').innerHTML = String(hour).padStart(2,"0") + ":" + String(minute).padStart(2,"0") + ":" + String(second).padStart(2,"0") + " " + dayList[day];
+}
+
+function updateTime() {
+    setInterval(todayFunc, 1000);
+}
+    </script>
+</body>
+</html>
